@@ -1,6 +1,7 @@
-# Activerecord::Json::Streamer
+# Activerecord::JsonStreamer
 
-TODO: Write a gem description
+Adds support for streaming huge json data of activerecord models.
+It doesn't loads all of your objects instantly, but do it in batches and writes each object's json data to stream one by one.
 
 ## Installation
 
@@ -14,10 +15,15 @@ And then execute:
 
 ## Usage
 
+
 stream = StringIO.new
-User.stream_json(@stream)
+
+User.to_json_stream(stream)
+
 or with custom fields like
-User.stream_json(@stream, {:only=>'name'})
+
+User.to_json_stream(stream, {:only=>'name'})
+
 
 ## Contributing
 

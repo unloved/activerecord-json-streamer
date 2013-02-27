@@ -14,12 +14,12 @@ describe ActiveRecord::Base do
   end
 
   it "simply gives right json" do
-    User.stream_json(@stream)
+    User.to_json_stream(@stream)
     @stream.string.should eq User.all.map(&:to_json).join('')
   end
 
   it "gives json with custom params" do
-    User.stream_json(@stream, {:only=>'name'})
+    User.to_json_stream(@stream, {:only=>'name'})
     @stream.string.should eq User.all.map{|el| el.to_json(:only=>:name)}.join('')
   end
 
